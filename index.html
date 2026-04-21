@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment Web Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+}
+
+/* Navbar */
+nav{
+    background:#222;
+    padding:15px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+}
+
+nav ul li{
+    margin-right:20px;
+    position:relative;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    padding:8px;
+}
+
+nav ul li a:hover{
+    background:#444;
+    border-radius:4px;
+}
+
+/* Dropdown */
+.dropdown-content{
+    display:none;
+    position:absolute;
+    top:35px;
+    background:white;
+    min-width:120px;
+    box-shadow:0 0 5px gray;
+}
+
+.dropdown-content a{
+    display:block;
+    color:black;
+    padding:10px;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+
+/* Slideshow */
+.slideshow-container{
+    width:80%;
+    margin:30px auto;
+    position:relative;
+}
+
+.slide{
+    display:none;
+}
+
+.slide img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+}
+
+.prev, .next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:30px;
+    background:rgba(0,0,0,0.5);
+    color:white;
+    padding:10px;
+    cursor:pointer;
+}
+
+.prev{
+    left:0;
+}
+
+.next{
+    right:0;
+}
+
+/* Button */
+.center-btn{
+    text-align:center;
+    margin:20px;
+}
+
+button{
+    padding:10px 20px;
+    cursor:pointer;
+    border:none;
+    background:#222;
+    color:white;
+}
+
+/* Modal */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    overflow:auto;
+}
+
+.modal-content{
+    background:white;
+    width:90%;
+    margin:40px auto;
+    padding:20px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* Gallery */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.pic{
+    position:relative;
+}
+
+.pic img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+.info{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.7);
+    color:white;
+    text-align:center;
+    padding:8px;
+    display:none;
+}
+
+.pic:hover .info{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+
+<li class="dropdown">
+<a href="#">Program</a>
+<div class="dropdown-content">
+<a href="#">SWE</a>
+<a href="#">EDM</a>
+<a href="#">EPS</a>
+<a href="#">Cyber</a>
+</div>
+</li>
+</ul>
+</nav>
+
+<!-- Slideshow -->
+<div class="slideshow-container">
+
+<div class="slide">
+<img src="https://picsum.photos/id/1015/900/400">
+</div>
+
+<div class="slide">
+<img src="https://picsum.photos/id/1016/900/400">
+</div>
+
+<div class="slide">
+<img src="https://picsum.photos/id/1018/900/400">
+</div>
+
+<div class="slide">
+<img src="https://picsum.photos/id/1020/900/400">
+</div>
+
+<div class="slide">
+<img src="https://picsum.photos/id/1024/900/400">
+</div>
+
+<span class="prev" onclick="changeSlide(-1)"><</span>
+<span class="next" onclick="changeSlide(1)">></span>
+
+</div>
+
+<!-- Modal Button -->
+<div class="center-btn">
+<button onclick="openModal()">Open Gallery</button>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="myModal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">×</span>
+
+<div class="gallery">
+
+<div class="pic"><img src="https://picsum.photos/200?1"><div class="info">Image 1 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?2"><div class="info">Image 2 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?3"><div class="info">Image 3 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?4"><div class="info">Image 4 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?5"><div class="info">Image 5 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?6"><div class="info">Image 6 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?7"><div class="info">Image 7 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?8"><div class="info">Image 8 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?9"><div class="info">Image 9 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?10"><div class="info">Image 10 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?11"><div class="info">Image 11 Description</div></div>
+<div class="pic"><img src="https://picsum.photos/200?12"><div class="info">Image 12 Description</div></div>
+
+</div>
+</div>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides(){
+    let slides = document.getElementsByClassName("slide");
+
+    for(let i=0; i<slides.length; i++){
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if(slideIndex > slides.length){
+        slideIndex = 1;
+    }
+
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 2000);
+}
+
+function changeSlide(n){
+    let slides = document.getElementsByClassName("slide");
+    slideIndex += n;
+
+    if(slideIndex > slides.length){
+        slideIndex = 1;
+    }
+
+    if(slideIndex < 1){
+        slideIndex = slides.length;
+    }
+
+    for(let i=0; i<slides.length; i++){
+        slides[i].style.display = "none";
+    }
+
+    slides[slideIndex-1].style.display = "block";
+}
+
+function openModal(){
+    document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal(){
+    document.getElementById("myModal").style.display = "none";
+}
+</script>
+
+</body>
+</html> 
